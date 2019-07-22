@@ -29,12 +29,12 @@ public class TaskController {
 
     @PostMapping("/addTask")
     public Task addTask(@RequestBody TaskModel taskModel) {
-        return 	taskService.addTask(requestBuilder.buildAddTaskRquest(taskModel));
+        return 	taskService.addTask(requestBuilder.buildAddTaskRequest(taskModel));
     }
 
     @PutMapping("/updateTask")
     public Task updateTask( @RequestBody TaskModel taskModel) {
-        return 	taskService.addTask(requestBuilder.buildAddTaskRquest(taskModel));
+        return 	taskService.addTask(requestBuilder.buildAddTaskRequest(taskModel));
     }
 
 

@@ -30,7 +30,7 @@ public class RequestBuilder {
         return newUser;
     }
 
-    public Project buildProjectRequest(@RequestBody ProjectModel projectModel) {
+    public Project buildProjectRequest(ProjectModel projectModel) {
         Project newProject = new Project();
         if (projectModel.getProjectID() != null) {
             newProject.setProjectId(projectModel.getProjectID());
@@ -44,7 +44,7 @@ public class RequestBuilder {
         return newProject;
     }
 
-    public Task buildAddTaskRquest(@RequestBody TaskModel taskModel) {
+    public Task buildAddTaskRequest( TaskModel taskModel) {
         Task newTask = new Task();
         if(taskModel.getTaskID() != null) {
             newTask.setTaskId(taskModel.getTaskID());
@@ -66,7 +66,7 @@ public class RequestBuilder {
         return newTask;
     }
 
-    public Task buildEndTaskRequest(@RequestBody TaskModel taskModel) {
+    public Task buildEndTaskRequest(TaskModel taskModel) {
         Task task = new Task();
         task.setTask(taskModel.getTask());
         task.setStartDate(taskModel.getStartDate());

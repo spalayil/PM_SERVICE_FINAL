@@ -1,7 +1,7 @@
 package com.fse.projectmanager.controller;
 
-import com.fse.projectmanager.TestConfiguration;
 import com.fse.projectmanager.builders.RequestBuilder;
+import com.fse.projectmanager.builders.ResponseBuilder;
 import com.fse.projectmanager.entity.User;
 import com.fse.projectmanager.model.UserModel;
 import com.fse.projectmanager.service.UserService;
@@ -13,14 +13,11 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-@ContextConfiguration(classes = {TestConfiguration.class})
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class UserControllerTest {
@@ -31,33 +28,39 @@ public class UserControllerTest {
     @Mock
     public UserService userService;
 
-    @Autowired
+    @Mock
     public RequestBuilder requestBuilder;
-/*
+
+    @Mock
+    ResponseBuilder responseBuilder;
+
     @Test
     public void saveUserTest(){
 
         Mockito.when(userService.addUser(Mockito.any(User.class))).thenReturn(TestUtils.getUser());
+        Mockito.when(requestBuilder.buildAddUserRequest(Mockito.any(UserModel.class))).thenReturn(TestUtils.getUser());
         User output = userController.addUser(TestUtils.getUserModel());
-
         Assert.assertEquals(TestUtils.getUser().getUserId(), output.getUserId());
 
     }
+
 
     @Test
     public void getAllUsersTest(){
 
         Mockito.when(userService.viewUsers()).thenReturn(TestUtils.getUserList());
-
+        Mockito.when(responseBuilder.buildViewUsersResponse(Mockito.any(List.class)))
+                .thenReturn(TestUtils.getUserList());
         List<UserModel> output = userController.viewUsers();
-
         Assert.assertEquals(2, output.size());
     }
+
 
     @Test
     public void editUserTest(){
 
         Mockito.when(userService.addUser(Mockito.any(User.class))).thenReturn(TestUtils.getUser());
+        Mockito.when(requestBuilder.buildAddUserRequest(Mockito.any(UserModel.class))).thenReturn(TestUtils.getUser());
         User output = userController.editUser(TestUtils.getUserModel());
 
         Assert.assertEquals(TestUtils.getUser().getUserId(),output.getUserId());
@@ -65,6 +68,7 @@ public class UserControllerTest {
         Assert.assertEquals(TestUtils.getUser().getLastName(),output.getLastName());
         Assert.assertEquals(TestUtils.getUser().getEmployeeId(),output.getEmployeeId());
     }
+
 
     @Test
     public void deleteUserTest(){
@@ -74,5 +78,5 @@ public class UserControllerTest {
         String output = userController.deleteUser(1);
 
         Assert.assertEquals("User deleted successfully", output);
-    }*/
+    }
 }
